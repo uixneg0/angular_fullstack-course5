@@ -1,1 +1,0 @@
-All application code copied from Lecture22.
