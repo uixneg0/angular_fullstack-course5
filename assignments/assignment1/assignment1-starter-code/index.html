@@ -1,29 +1,36 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html data-ng-app="LunchCheck" lang="en">
+<head>
     <title>Lunch Checker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <style>
-      .message { font-size: 1.3em; font-weight: bold; }
-    </style>
-  </head>
-<body>
-   <div class="container">
-     <h1>Lunch Checker</h1>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
 
-         <div class="form-group">
-             <input id="lunch-menu" type="text"
-             placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control">
-         </div>
-         <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
-         </div>
-         <div class="form-group message">
-           <!-- Your message can go here. -->
-         </div>
-   </div>
+
+    <style>
+        .message {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container" data-ng-controller="LunchCheckController">
+    <h1>Lunch Checker</h1>
+    <div class="form-group">
+        <input class="form-control" data-ng-model="lunch" id="lunch-menu"
+               placeholder="list comma separated dishes you usually have for lunch"
+               type="text">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-default" data-ng-click="checkTooMuch()">Check If Too Much</button>
+    </div>
+    <div class="form-group message">
+        {{message}}
+        <!-- Your message can go here. -->
+    </div>
+</div>
 
 </body>
-</html>
