@@ -16,13 +16,16 @@
     <div class="container">
         <input class="form-control" data-ng-model="controller.searchTerm" placeholder="Search Term" type="text">
     </div>
-    <br>
+
     <div class="container narrow-button">
         <button class="btn btn-primary" ng-click="controller.findItems()">Narrow It Down For Me!
         </button>
     </div>
-    <br>
+
     <div class="container">
+        <div ng-if="controller.shouldShowNothingFound()">
+            Nothing found
+        </div>
         <ul>
             <found-items
                     items="controller.found"

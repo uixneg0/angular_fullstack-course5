@@ -29,12 +29,13 @@
         this.found = [];
         this.searchTerm = "";
         this.service = MenuSearchService;
+        this.findItemsCalled = false;
 
         this.findItems = function () {
+            this.findItemsCalled = true;
             var promise = this.service.getMatchedMenuItems(this.searchTerm);
             promise.then((result) => {
                 this.found = result;
-                console.log(this.found);
             });
         }
 
@@ -42,8 +43,8 @@
             this.found.splice(index, 1);
         }
 
-        this.test = () => {
-            console.log(this.found);
+        this.shouldShowNothingFound = function (){
+            return this.found.length === 0 && this.findItemsCalled;
         }
     }
 
@@ -55,6 +56,7 @@
             var promise = this.getMenuItems()
                 .then(function (response) {
                     var matchedItems = [];
+                    if (searchTerm === "") return matchedItems;
                     var responseData = response.data;
                     var keys = Object.keys(responseData);
                     keys.forEach(key => {
